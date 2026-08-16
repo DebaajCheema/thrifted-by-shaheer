@@ -5,7 +5,7 @@ import Link from "next/link";
 import Ticker from "@/components/Ticker";
 import ProductCard from "@/components/ProductCard";
 import { AtSign, Phone, ArrowDown } from "lucide-react";
-import { PRODUCTS, CATEGORIES } from "@/lib/products";
+import { CATEGORIES } from "@/lib/products";
 
 const CATEGORY_INFO = {
   Tops: {
@@ -35,11 +35,16 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const featured = PRODUCTS.filter(
-      (p) => p.featured && p.status === "available"
-    ).slice(0, 6);
-    setProducts(featured);
-    setLoading(false);
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        const featured = (data.products || [])
+          .filter((p) => p.featured && p.status === "available")
+          .slice(0, 6);
+        setProducts(featured);
+      })
+      .catch(() => setProducts([]))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -151,7 +156,9 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section><section className="px-5 md:px-10 py-20 md:py-32 border-t border-white/10">
+      </section>
+
+      <section className="px-5 md:px-10 py-20 md:py-32 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
             <div>

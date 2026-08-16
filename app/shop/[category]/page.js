@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import { PRODUCTS } from "@/lib/products";
 
 const CATEGORY_MANIFESTOS = {
   Tops: "Worn-in canvas. Each thread carries a decade of style.",
@@ -22,9 +21,16 @@ export default function Shop() {
 
   useEffect(() => {
     setLoading(true);
-    const filtered = PRODUCTS.filter((p) => p.category === category);
-    setProducts(filtered);
-    setLoading(false);
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        const filtered = (data.products || []).filter(
+          (p) => p.category === category
+        );
+        setProducts(filtered);
+      })
+      .catch(() => setProducts([]))
+      .finally(() => setLoading(false));
   }, [category]);
 
   const manifesto = CATEGORY_MANIFESTOS[category] || "Curated luxury artifacts.";
