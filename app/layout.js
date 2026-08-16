@@ -6,7 +6,33 @@ import CustomCursor from "@/components/CustomCursor";
 
 export const metadata = {
   title: "Thrifted by Shaheer",
-  description: "Curated luxury archive. One-of-one artifacts, authenticated and elevated for the culture.",
+  description:
+    "Curated luxury archive. One-of-one artifacts, authenticated and elevated for the culture.",
+  metadataBase: new URL("https://thrifted-by-shaheer.vercel.app"),
+  openGraph: {
+    title: "Thrifted by Shaheer",
+    description:
+      "Curated luxury archive. One-of-one artifacts, authenticated and elevated for the culture.",
+    url: "https://thrifted-by-shaheer.vercel.app",
+    siteName: "Thrifted by Shaheer",
+    images: [
+      {
+        url: "/images/logo.jpg",
+        width: 800,
+        height: 800,
+        alt: "Thrifted by Shaheer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thrifted by Shaheer",
+    description:
+      "Curated luxury archive. One-of-one artifacts, authenticated and elevated for the culture.",
+    images: ["/images/logo.jpg"],
+  },
 };
 
 export default function RootLayout({ children }) {
