@@ -1,0 +1,42 @@
+<svg width="600" height="750" viewBox="0 0 600 750" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad-shoes" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141210"/>
+      <stop offset="1" stop-color="#1b1815"/>
+    </linearGradient>
+    <pattern id="stripes-shoes" width="14" height="14" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="transparent"/>
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#1b1815" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <radialGradient id="vignette-shoes" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.55"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="750" fill="url(#bgGrad-shoes)"/>
+  <rect width="600" height="750" fill="url(#stripes-shoes)"/>
+  <rect width="600" height="750" fill="url(#vignette-shoes)"/>
+
+  <rect x="24" y="24" width="552" height="702" fill="none"
+        stroke="#4a4338" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.8"/>
+
+  <g fill="none" stroke="#cfc7b3" stroke-width="3" stroke-linejoin="round"
+     stroke-linecap="round" opacity="0.55">
+    
+        <path d="M150 420 L150 350 C150 330 165 320 180 322 L220 330 L260 300
+                 L300 320 L360 305 C400 295 430 310 450 340 L470 400
+                 C475 415 465 425 445 425 L170 430 C155 430 150 425 150 420 Z" />
+        <line x1="220" y1="330" x2="220" y2="380" />
+        <line x1="300" y1="320" x2="300" y2="390" />
+    
+  </g>
+
+  <text x="300.0" y="660" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="700" font-size="30" letter-spacing="6" fill="#cfc7b3" opacity="0.28">SHOES</text>
+
+  <g transform="translate(544,610) rotate(-90)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="12"
+          letter-spacing="3" fill="#6f6a52" opacity="0.7">THRIFTED BY SHAHEER</text>
+  </g>
+</svg>

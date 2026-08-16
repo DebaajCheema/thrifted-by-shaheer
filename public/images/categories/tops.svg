@@ -1,0 +1,40 @@
+<svg width="600" height="750" viewBox="0 0 600 750" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad-tops" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141210"/>
+      <stop offset="1" stop-color="#1b1815"/>
+    </linearGradient>
+    <pattern id="stripes-tops" width="14" height="14" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="transparent"/>
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#1b1815" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <radialGradient id="vignette-tops" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.55"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="750" fill="url(#bgGrad-tops)"/>
+  <rect width="600" height="750" fill="url(#stripes-tops)"/>
+  <rect width="600" height="750" fill="url(#vignette-tops)"/>
+
+  <rect x="24" y="24" width="552" height="702" fill="none"
+        stroke="#4a4338" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.8"/>
+
+  <g fill="none" stroke="#cfc7b3" stroke-width="3" stroke-linejoin="round"
+     stroke-linecap="round" opacity="0.55">
+    
+        <path d="M210 190 L260 150 L340 150 L390 190 L430 240 L390 280 L360 260 L360 470
+                 C360 490 340 500 300 500 C260 500 240 490 240 470 L240 260 L210 280
+                 L170 240 Z" />
+    
+  </g>
+
+  <text x="300.0" y="660" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif"
+        font-weight="700" font-size="30" letter-spacing="6" fill="#cfc7b3" opacity="0.28">TOPS</text>
+
+  <g transform="translate(544,610) rotate(-90)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="12"
+          letter-spacing="3" fill="#6f6a52" opacity="0.7">THRIFTED BY SHAHEER</text>
+  </g>
+</svg>

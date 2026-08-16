@@ -10,23 +10,23 @@ import { CATEGORIES } from "@/lib/products";
 const CATEGORY_INFO = {
   Tops: {
     manifesto: "Worn-in canvas. Each thread carries a decade.",
-    image: "/images/categories/tops.jpg",
+    image: "/images/categories/tops.svg",
   },
   Bottoms: {
     manifesto: "Utility redefined. Cuts sourced from forgotten closets.",
-    image: "/images/categories/bottoms.jpg",
+    image: "/images/categories/bottoms.svg",
   },
   Caps: {
     manifesto: "Crowns of the culture. Curved, faded, archived.",
-    image: "/images/categories/caps.jpg",
+    image: "/images/categories/caps.svg",
   },
   Shoes: {
     manifesto: "Soles with stories. Sneakers that walked before you.",
-    image: "/images/categories/shoes.jpg",
+    image: "/images/categories/shoes.svg",
   },
   Outerwear: {
     manifesto: "Armor for the era. Heavy fabric, heavier history.",
-    image: "/images/categories/outerwear.jpg",
+    image: "/images/categories/outerwear.svg",
   },
 };
 
