@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Ticker from "@/components/Ticker";
 import ProductCard from "@/components/ProductCard";
 import { AtSign, Phone, ArrowDown } from "lucide-react";
@@ -72,11 +73,16 @@ export default function Home() {
         </div>
 
         <div className="relative flex-1 min-h-[50vh] md:min-h-screen bg-black flex items-center justify-center p-8 md:p-16">
-          <img
-            src="/images/logo.jpg"
-            alt="Thrifted by Shaheer"
-            className="w-full max-w-[420px] aspect-square rounded-full object-cover ring-1 ring-white/15"
-          />
+          <div className="relative w-full max-w-[420px] aspect-square rounded-full overflow-hidden ring-1 ring-white/15">
+            <Image
+              src="/images/logo.jpg"
+              alt="Thrifted by Shaheer"
+              fill
+              sizes="(max-width: 768px) 90vw, 420px"
+              className="object-cover"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20 pointer-events-none" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
             <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60 mb-2">
@@ -135,10 +141,12 @@ export default function Home() {
                 className="group relative block"
               >
                 <div className="relative overflow-hidden aspect-[4/5] bg-white/5">
-                  <img
+                  <Image
                     src={CATEGORY_INFO[cat].image}
                     alt={cat}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.25em] text-white/70">
                     {String(i + 1).padStart(2, "0")} / {String(CATEGORIES.length).padStart(2, "0")}
@@ -255,11 +263,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             <div>
-              <img
-                src="/images/logo.jpg"
-                alt="Thrifted by Shaheer"
-                className="w-16 h-16 rounded-full object-cover ring-1 ring-white/20 mb-5"
-              />
+              <div className="relative w-16 h-16 rounded-full overflow-hidden ring-1 ring-white/20 mb-5">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="Thrifted by Shaheer"
+                  fill
+                  sizes="64px"
+                  className="object-cover"
+                />
+              </div>
               <h3 className="font-heading text-2xl font-black uppercase tracking-tight">
                 Thrifted
               </h3>
