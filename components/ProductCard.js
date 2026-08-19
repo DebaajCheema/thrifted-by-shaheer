@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductCard({ product }) {
   return (
@@ -8,12 +9,13 @@ export default function ProductCard({ product }) {
       className="group relative block"
     >
       <div className="relative overflow-hidden bg-black">
-        <div className="aspect-[3/4] w-full overflow-hidden">
-          <img
+        <div className="relative aspect-[3/4] w-full overflow-hidden">
+          <Image
             src={product.image_url}
             alt={product.name}
-            loading="lazy"
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
           />
         </div>
         {product.status === "sold" && (
