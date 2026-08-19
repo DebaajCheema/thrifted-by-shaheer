@@ -1,14 +1,27 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useCart } from "@/lib/CartContext";
 import { X, Plus, Minus } from "lucide-react";
 
 const WHATSAPP_NUMBER = "923184690194";
+const INSTAGRAM_USERNAME = "thriftedbyshaheer";
 
 export default function CartDrawer() {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, total, clearCart, count } =
     useCart();
+  const [copyNotice, setCopyNotice] = useState(false);
+
+  const buildOrderLines = () => {
+    const lines = [];
+    items.forEach((item, i) => {
+      lines.push(`${i + 1}. ${item.name}`);
+      lines.push(`   Size: ${item.size || "N/A"} x ${item.quantity}`);
+      lines.push(`   Rs. ${(item.price * item.quantity).toLocaleString()}`);
+    });
+    return lines;
+  };
 
   const buildWhatsAppMessage = () => {
     let msg = "*New Order — Thrifted by Shaheer*\n\n";
@@ -21,9 +34,28 @@ export default function CartDrawer() {
     return encodeURIComponent(msg);
   };
 
+  const buildPlainOrderText = () => {
+    let msg = "New Order — Thrifted by Shaheer\n\n";
+    msg += buildOrderLines().join("\n");
+    msg += `\n\nTotal: Rs. ${total.toLocaleString()}`;
+    return msg;
+  };
+
   const handleWhatsAppOrder = () => {
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${buildWhatsAppMessage()}`;
     window.open(url, "_blank");
+  };
+
+  const handleInstagramOrder = async () => {
+    const text = buildPlainOrderText();
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyNotice(true);
+      setTimeout(() => setCopyNotice(false), 4000);
+    } catch (err) {
+      // Clipboard can fail on some browsers/permissions — order still opens fine either way
+    }
+    window.open(`https://ig.me/m/${INSTAGRAM_USERNAME}`, "_blank");
   };
 
   return (
@@ -137,12 +169,28 @@ export default function CartDrawer() {
                     Rs. {total.toLocaleString()}
                   </span>
                 </div>
-                <button
-                  onClick={handleWhatsAppOrder}
-                  className="w-full bg-black text-white font-heading text-sm font-bold uppercase tracking-wide py-4 hover:bg-black/85 transition-colors"
-                >
-                  Order on WhatsApp
-                </button>
+
+                {copyNotice && (
+                  <p className="text-xs text-center text-[#8F949D] mb-3">
+                    Order copied — paste it into the Instagram DM that just opened.
+                  </p>
+                )}
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={handleWhatsAppOrder}
+                    className="flex-1 bg-black text-white font-heading text-sm font-bold uppercase tracking-wide py-4 hover:bg-black/85 transition-colors"
+                  >
+                    Order on WhatsApp
+                  </button>
+                  <button
+                    onClick={handleInstagramOrder}
+                    className="flex-1 bg-white text-black font-heading text-sm font-bold uppercase tracking-wide py-4 border border-black hover:bg-black hover:text-white transition-colors"
+                  >
+                    Order on Instagram
+                  </button>
+                </div>
+
                 <button
                   onClick={clearCart}
                   className="w-full text-center text-xs text-[#8F949D] hover:text-black underline underline-offset-2 mt-3 transition-colors"
